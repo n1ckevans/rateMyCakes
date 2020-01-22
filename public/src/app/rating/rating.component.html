@@ -1,0 +1,17 @@
+<form (submit)="rate(cake)">
+        <div>
+          <label>Rating: </label>
+          <select type="text" name="rating" [(ngModel)]="rating.rating">
+              <option value="1">1 Star</option>
+              <option value="2">2 Star</option>
+              <option value="3">3 Star</option>
+              <option value="4">4 Star</option>
+              <option value="5">5 Star</option>
+            </select>
+        </div>
+        <div>
+          <label>Comment: </label>
+          <input type="text" name="comment" [(ngModel)]="rating.comment">
+        </div>
+        <button>Rate</button>
+      </form>

@@ -1,0 +1,56 @@
+<h1 class="text-center">Caaaakes</h1>
+<h2 class="text-center">Bake a Cake!</h2>
+
+<div class="d-inline">
+
+  <form (submit)="create()">
+    <div>
+      <label>Baker: </label>
+      <input type="text" name="baker" [(ngModel)]="newCake.baker">
+    </div>
+    <div>
+      <label>Photo URL: </label>
+      <input type="text" name="photo" [(ngModel)]="newCake.photo">
+    </div>
+    <button>Create a Cake!</button>
+  </form>
+</div>
+
+<hr>
+
+
+
+<div *ngIf="cakes" class="select-cake">
+
+  <div *ngFor="let cake of cakes" class="d-inline-block">
+
+    <div>
+
+      <img (click)="selectCake(cake)" class="cake" src="{{ cake.photo}}" alt="Some cake">
+      <app-rating [cake]="cake"></app-rating>
+
+
+
+    </div>
+
+
+  </div>
+</div>
+
+
+<div *ngIf="selectedCake" class="select-cake">
+  <h2>Baked by {{ selectedCake.baker}}</h2>
+  <img class="cake" src="{{ selectedCake.photo }}" alt="Selected cake">
+  <h3>Average Rating: {{avgRating(selectedCake.rating)}}</h3>
+  <div *ngFor="let rating of selectedCake.rating">
+
+    <p>{{rating.comment}}</p>
+    <p>{{rating.rating}}</p>
+
+  </div>
+
+</div>
+
+
+
+<router-outlet></router-outlet>
